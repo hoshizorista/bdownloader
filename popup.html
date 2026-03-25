@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 280px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .content {
+      padding: 16px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-secondary {
+      background: #16213e;
+      color: #eee;
+    }
+
+    .btn-secondary:hover {
+      background: #1f2b47;
+    }
+
+    .status {
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: none;
+      text-align: center;
+    }
+
+    .status.show {
+      display: block;
+    }
+
+    .status.info {
+      background: #1e3a5f;
+      border-left: 3px solid #3498db;
+    }
+
+    .status.success {
+      background: #1e3a3a;
+      border-left: 3px solid #27ae60;
+    }
+
+    .status.error {
+      background: #3a1e1e;
+      border-left: 3px solid #e74c3c;
+    }
+
+    .progress-container {
+      margin-top: 12px;
+      display: none;
+    }
+
+    .progress-container.show {
+      display: block;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #16213e;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    .progress-text {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .file-info {
+      background: #16213e;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    .file-info.show {
+      display: block;
+    }
+
+    .file-info .label {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .file-info .name {
+      font-weight: 600;
+      font-size: 14px;
+      word-break: break-all;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: #666;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .footer {
+      padding: 10px 16px;
+      border-top: 1px solid #333;
+      text-align: center;
+      font-size: 10px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>BDownloader</h1>
+  </div>
+
+  <div class="content">
+    <div class="file-info" id="fileInfo">
+      <div class="label">Detected File</div>
+      <div class="name" id="fileName">-</div>
+    </div>
+
+    <button class="btn btn-primary" id="downloadBtn">Download</button>
+    <button class="btn btn-secondary" id="refreshBtn">Refresh</button>
+
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText">Preparing...</div>
+    </div>
+
+    <div class="status" id="status"></div>
+
+    <div class="hint">Or press Ctrl+Shift+D on any Google Drive page</div>
+  </div>
+
+  <div class="footer">
+    BDownloader v1.0
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
